@@ -1,0 +1,25 @@
+public static String generateNum(List<Integer> numbers) {
+        Integer num = null;
+        if (numbers.get(0) != 1) {
+            return "001";
+        }
+
+        for (int i = 1; i < numbers.size(); i++) {
+            if ((numbers.get(i) - numbers.get(i-1)) > 1) {
+                num = numbers.get(i-1) + 1;
+                break;
+            }
+        }
+
+        if (null == num) {
+            num = numbers.get(numbers.size() - 1) + 1;
+        }
+
+        if (num.toString().length() == 1) {
+            return "00" + num;
+        } else if (num.toString().length() == 2) {
+            return "0" + num;
+        } else {
+            return num.toString();
+        }
+    }
